@@ -1,0 +1,37 @@
+[project]
+name = "agv-rl-playground"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { email = "16837613+jun_wuming@user.noreply.gitee.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "gymnasium>=1.4.0",
+    "matplotlib>=3.10.9",
+    "numpy<2.0",
+    "pygame>=2.6.1",
+    "tqdm>=4.70.1",
+    "torch",          # 新增
+    "torchvision",    # 新增
+]
+
+[project.scripts]
+agv-rl-playground = "agv_rl_playground:main"
+
+[build-system]
+requires = ["uv_build>=0.12.20,<0.13.0"]
+build-backend = "uv_build"
+
+
+# 定义 PyTorch 官方 CPU 版本的索引
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# 指定 torch 和 torchvision 从上面定义的索引中安装
+[tool.uv.sources]
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
